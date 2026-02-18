@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.sitename {
+  font-size: 40px;
+  margin: 0px;
+  font-weight: lighter;
+  color: #022034;
+  font-family: "Roboto", sans-serif;
+}
+
+.navmenu a,
+.navmenu a:focus {
+  color: #022034;
+  padding: 18px 15px;
+  margin-right: 20px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.navmenu li:hover > a,
+.navmenu .active,
+.navmenu .active:focus {
+  color: #0c601c;
+}
+
+.navmenu .dropdown ul a:hover,
+.navmenu .dropdown ul .active:hover,
+.navmenu .dropdown ul li:hover > a {
+  color: #0c601c;
+}
