@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+.brand-color {
+  color: #4a3025;
+}
+.bg-brand-light {
+  background-color: #f4f1ea;
+}
+.btn-brand {
+  background-color: #4a3025;
+  color: white;
+  border: none;
+}
+.btn-brand:hover {
+  background-color: #332018;
+  color: white;
+}
+
+.sitename {
+  font-size: 40px;
+  margin: 0px;
+  font-weight: lighter;
+  font-family: "Roboto", sans-serif;
+}
+
+.nav-link {
+  margin-right: 20px;
+}
