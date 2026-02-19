@@ -22,10 +22,12 @@ const fetchBooks = async () => {
     productListElement.innerHTML = ""; // Clear the existing content
 
     books.forEach((book) => {
-      console.log("hena bengarab tany ", book);
+      // console.log("hena bengarab tany ", book);
       const card = document.createElement("div"); // Correctly create a new div for each product
       card.className = "col justify-content-center"; // Ensure each product is a card element
       card.innerHTML = `
+      <a href="/pages/product-details.html?id=${book.id}" class="text-decoration-none text-black">
+        
           <div class="card h-100">
             <img src="${book.image_url}" alt="${book.title}" class="card-img-top">
             <div class="card-body bg-brand-light">
@@ -34,6 +36,7 @@ const fetchBooks = async () => {
                 <button class="btn  btn-brand mt-auto w-100 ">Add to cart</button>
             </div>
           </div>
+          </a>
         `;
 
       productListElement.appendChild(card); // Append the new card to the product list
