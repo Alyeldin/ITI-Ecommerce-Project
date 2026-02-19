@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register Page</title>
+    <title>Authors Page</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -66,7 +66,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/pages/contact.html">Contact</a>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
                     href="#"
@@ -78,7 +78,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item active" href="/pages/signup.html"
+                      <a class="dropdown-item" href="/pages/signup.html"
                         >Register</a
                       >
                     </li>
@@ -111,58 +111,19 @@
         </nav>
       </div>
     </header>
-    <main class="container my-5 d-flex align-items-center justify-content-center ">
+    <main class="container my-5 min-vh-100">
       
-      <div class="row w-100 justify-content-center">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="authors-container">
         
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card border-0 shadow-lg p-4 bg-brand-light rounded-4">
-            <div class="card-body text-center">
-              
-              <h2 class="  brand-color mb-2">Create an Account</h2>
-              <p class="text-muted mb-4">Join us and start building your library today.</p>
-              <form id="registerForm" novalidate>
-                
-                <div class="text-start mb-3">
-                  <label for="fullName" class="form-label   brand-color">Full Name</label>
-                  <input type="text" class="form-control px-3 py-2" id="fullName" placeholder="e.g. Mostafa Rabea" required>
-                  <div class="invalid-feedback">Please enter your full name.</div> <!-- we will use this class in js in case of wrong input  -->
-                </div>
-                
-                <div class="text-start mb-3">
-                  <label for="email" class="form-label   brand-color">Email Address</label>
-                  <input type="email" class="form-control px-3 py-2" id="email" placeholder="name@example.com" required>
-                  <div class="invalid-feedback">Please enter a valid email address.</div> <!-- we will use this class in js in case of wrong input  -->
-                </div>
-
-                <div class="text-start mb-3">
-                  <label for="password" class="form-label   brand-color">Password</label>
-                  <input type="password" class="form-control px-3 py-2" id="password" placeholder="Create a strong password" required>
-                  <div class="invalid-feedback">Password must be at least 8 characters.</div> <!-- we will use this class in js in case of wrong input  -->
-                </div>
-
-                <div class="text-start mb-4">
-                  <label for="confirmPassword" class="form-label   brand-color">Confirm Password</label>
-                  <input type="password" class="form-control px-3 py-2" id="confirmPassword" placeholder="Repeat your password" required>
-                  <div class="invalid-feedback">Passwords do not match.</div> <!-- we will use this class in js in case of wrong input  -->
-                </div> 
-
-                <button type="submit" class="btn btn-brand w-100 py-2 mb-3 rounded-pill  ">Register</button>
-                <p class="text-muted small mb-0">
-                  Already have an account? 
-                  <a href="/pages/login.html" class="brand-color   text-decoration-none">Sign in here</a>
-                </p>
-
-              </form>
-              
-              </div>
-          </div>
-            </div>
+        <div class="col-12 text-center my-5" id="loading-spinner">
+          <div class="spinner-border brand-color" role="status"></div>
+          <p class="mt-2 text-muted">Loading authors from database...</p>
+        </div>
 
       </div>
 
     </main>
-    
+
     <footer class="bg-brand-light pt-5 pb-3 border-top">
       <div class="container">
         <div class="row gy-4 mb-4">
@@ -175,7 +136,7 @@
           </div>
 
           <div class="col-lg-4">
-            <h5 class="brand-color   mb-3">Quick Links</h5>
+            <h5 class="brand-color  fw-light mb-3">Quick Links</h5>
             <div class="row">
               <div class="col-6">
                 <ul class="list-unstyled">
@@ -237,5 +198,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/auth.js"></script>
   </body>
 </html>
