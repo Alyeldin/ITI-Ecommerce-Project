@@ -24,14 +24,16 @@ const fetchBooks = async () => {
     books.forEach((book) => {
       console.log("hena bengarab tany ", book);
       const card = document.createElement("div"); // Correctly create a new div for each product
-      card.className = "card h-100"; // Ensure each product is a card element
+      card.className = "col justify-content-center"; // Ensure each product is a card element
       card.innerHTML = `
+          <div class="card h-100">
             <img src="${book.image_url}" alt="${book.title}" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">${book.title}</h5>
-                <p class="card-text">${book.price}</p>
-                <button class="btn btn-primary">Buy</button>
+            <div class="card-body bg-brand-light">
+                <h5 class="card-title  lead">${book.title}</h5>
+                <p class="card-text text-muted lead">Price: ${book.price} $</p>
+                <button class="btn  btn-brand mt-auto w-100 ">Add to cart</button>
             </div>
+          </div>
         `;
       productListElement.appendChild(card); // Append the new card to the product list
     });
