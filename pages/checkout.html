@@ -114,6 +114,122 @@
         </nav>
       </div>
     </header>
+    <main class="container my-5 min-vh-90">
+      
+      <div class="mb-4">
+        <h2 class=" brand-color fw-light">Checkout</h2>
+        <p class="text-muted">Please enter your details to complete your order.</p>
+      </div>
+
+      <div class="row gy-5">
+        
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm p-4">
+            <h4 class="mb-4 brand-color  fw-light">Billing Details</h4>
+            
+            <form id="checkoutForm" novalidate>
+              <div class="row g-3">
+                
+                <div class="col-md-6">
+                  <label for="checkoutName" class="form-label brand-color  fw-light">Full Name</label>
+                  <input type="text" class="form-control" id="checkoutName" required>
+                  <div class="invalid-feedback">Valid name is required.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="checkoutPhone" class="form-label brand-color  fw-light">Phone Number</label>
+                  <input type="tel" class="form-control" id="checkoutPhone" placeholder="01xxxxxxxxx" required>
+                  <div class="invalid-feedback">Valid phone number is required.</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="checkoutEmail" class="form-label brand-color  fw-light">Email</label>
+                  <input type="email" class="form-control" id="checkoutEmail" placeholder="you@example.com" required>
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="checkoutAddress" class="form-label brand-color  fw-light">Shipping Address</label>
+                  <input type="text" class="form-control" id="checkoutAddress" placeholder="123 Main St, Apartment, Studio, or floor" required>
+                  <div class="invalid-feedback">Please enter your shipping address.</div>
+                </div>
+
+<div class="col-12 mt-4">
+  <h5 class="brand-color fw-bold mb-3">Payment Method</h5>
+  <div class="form-check mb-2">
+    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+    <label class="form-check-label" for="credit">Credit / Debit Card</label>
+  </div>
+  <div class="form-check mb-2">
+    <input id="cash" name="paymentMethod" type="radio" class="form-check-input" required>
+    <label class="form-check-label" for="cash">Cash on Delivery</label>
+  </div>
+</div>
+
+<div id="cardDetailsArea" class="col-12 mt-3 p-4 bg-brand-light rounded-3 border border-secondary-subtle">
+  <div class="row g-3">
+    <div class="col-12">
+      <label for="cardNumber" class="form-label brand-color fw-bold small">Card Number</label>
+      <input type="text" class="form-control" id="cardNumber" placeholder="0000 0000 0000 0000" required>
+    </div>
+    <div class="col-6">
+      <label for="cardExpiry" class="form-label brand-color fw-bold small">Expiry Date</label>
+      <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY" required>
+    </div>
+    <div class="col-6">
+      <label for="cardCvv" class="form-label brand-color fw-bold small">CVV</label>
+      <input type="text" class="form-control" id="cardCvv" placeholder="123" required>
+    </div>
+  </div>
+</div>
+
+              </div>
+            </form>
+          </div>
+            </div>
+
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm bg-brand-light p-4 rounded-4">
+            <h5 class="brand-color fw-light mb-4">Your Order</h5>
+            
+            <ul class="list-group list-group-flush mb-4 bg-transparent">
+              <li class="list-group-item d-flex justify-content-between lh-sm bg-transparent px-0 border-secondary-subtle">
+                <div>
+                  <h6 class="my-0 brand-color fw-bold">Atomic Habits</h6>
+                  <small class="text-muted">Qty: 1</small>
+                </div>
+                <span class="text-muted">1065.05 EGP</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-sm bg-transparent px-0 border-secondary-subtle">
+                <div>
+                  <h6 class="my-0 brand-color fw-bold">Verity</h6>
+                  <small class="text-muted">Qty: 1</small>
+                </div>
+                <span class="text-muted">877.10 EGP</span>
+              </li>
+            </ul>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Subtotal</span>
+              <span>1942.15 EGP</span>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+              <span class="text-muted">Shipping</span>
+              <span class="text-success">Free</span>
+            </div>
+            <hr class="text-muted">
+            <div class="d-flex justify-content-between mb-4">
+              <span class="fs-5 brand-color">Total</span>
+              <span class="fs-5 brand-color">1942.15 EGP</span>
+            </div>
+
+            <button type="submit" form="checkoutForm" class="btn btn-brand w-100 py-3 rounded-pill  fs-5">Place Order</button>
+          </div>
+            </div>
+
+      </div>
+    </main>
+
     <footer class="bg-brand-light pt-5 pb-3 border-top">
       <div class="container">
         <div class="row gy-4 mb-4">
@@ -126,7 +242,7 @@
           </div>
 
           <div class="col-lg-4">
-            <h5 class="brand-color fw-bold mb-3">Quick Links</h5>
+            <h5 class="brand-color  fw-light mb-3">Quick Links</h5>
             <div class="row">
               <div class="col-6">
                 <ul class="list-unstyled">

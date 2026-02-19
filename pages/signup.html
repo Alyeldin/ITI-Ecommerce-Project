@@ -114,6 +114,58 @@
         </nav>
       </div>
     </header>
+    <main class="container my-5 d-flex align-items-center justify-content-center ">
+      
+      <div class="row w-100 justify-content-center">
+        
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card border-0 shadow-lg p-4 bg-brand-light rounded-4">
+            <div class="card-body text-center">
+              
+              <h2 class="  brand-color mb-2">Create an Account</h2>
+              <p class="text-muted mb-4">Join us and start building your library today.</p>
+              <form id="registerForm" novalidate>
+                
+                <div class="text-start mb-3">
+                  <label for="fullName" class="form-label   brand-color">Full Name</label>
+                  <input type="text" class="form-control px-3 py-2" id="fullName" placeholder="e.g. Mostafa Rabea" required>
+                  <div class="invalid-feedback">Please enter your full name.</div> <!-- we will use this class in js in case of wrong input  -->
+                </div>
+                
+                <div class="text-start mb-3">
+                  <label for="email" class="form-label   brand-color">Email Address</label>
+                  <input type="email" class="form-control px-3 py-2" id="email" placeholder="name@example.com" required>
+                  <div class="invalid-feedback">Please enter a valid email address.</div> <!-- we will use this class in js in case of wrong input  -->
+                </div>
+
+                <div class="text-start mb-3">
+                  <label for="password" class="form-label   brand-color">Password</label>
+                  <input type="password" class="form-control px-3 py-2" id="password" placeholder="Create a strong password" required>
+                  <div class="invalid-feedback">Password must be at least 8 characters.</div> <!-- we will use this class in js in case of wrong input  -->
+                </div>
+
+                <div class="text-start mb-4">
+                  <label for="confirmPassword" class="form-label   brand-color">Confirm Password</label>
+                  <input type="password" class="form-control px-3 py-2" id="confirmPassword" placeholder="Repeat your password" required>
+                  <div class="invalid-feedback">Passwords do not match.</div> <!-- we will use this class in js in case of wrong input  -->
+                </div> 
+
+                <button type="submit" class="btn btn-brand w-100 py-2 mb-3 rounded-pill  ">Register</button>
+                <p class="text-muted small mb-0">
+                  Already have an account? 
+                  <a href="/pages/login.html" class="brand-color   text-decoration-none">Sign in here</a>
+                </p>
+
+              </form>
+              
+              </div>
+          </div>
+            </div>
+
+      </div>
+
+    </main>
+    
     <footer class="bg-brand-light pt-5 pb-3 border-top">
       <div class="container">
         <div class="row gy-4 mb-4">
@@ -126,7 +178,7 @@
           </div>
 
           <div class="col-lg-4">
-            <h5 class="brand-color fw-bold mb-3">Quick Links</h5>
+            <h5 class="brand-color   mb-3">Quick Links</h5>
             <div class="row">
               <div class="col-6">
                 <ul class="list-unstyled">
