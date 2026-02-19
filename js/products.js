@@ -35,6 +35,7 @@ const fetchBooks = async () => {
             </div>
           </div>
         `;
+
       productListElement.appendChild(card); // Append the new card to the product list
     });
 
