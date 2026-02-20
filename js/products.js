@@ -1,13 +1,7 @@
 // Get author_id from URL (?author_id=2)
-const params = new URLSearchParams(window.location.search);
-const authorId = params.get("id");
+let params = new URLSearchParams(window.location.search);
+let authorId = params.get("id");
 console.log(authorId);
-
-// if (authorId) {
-//   fetchBooks({ authorId: parseInt(authorId) });
-// } else {
-//   fetchBooks(); // Show all if no author specified
-// }
 
 const fetchBooks = async () => {
   let url = "https://tmlgzmvphyqiygezzgmc.supabase.co/rest/v1/books?select=*";
