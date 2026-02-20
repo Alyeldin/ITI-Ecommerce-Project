@@ -115,56 +115,29 @@
       </div>
     </header>
     <main class="container my-5 min-vh-90">
+      
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="sitename brand-color">Shopping Cart</h2>
-        <div class="row gy-4">
-          <div class="col-lg-8" id="cart-items-container"></div>
-
-          <div class="col-lg-4"></div>
-        </div>
-        <span class="text-muted"
-          ><span id="cart-count">x amount</span> Items</span
-        >
-        <!-- x = total number of books in the cart -->
+        <span class="text-muted"><span id="cart-count">0</span> Items</span>
       </div>
-      <!-- Item in the cart -->
-      <div class="card border-0 shadow-sm mb-3">
-            <div class="card-body">
-              <!-- tags per book title start -->
-           <div class="row align-items-center mb-4 pb-4 border-bottom"> 
-                
-                <div class="col-4 col-md-2 text-center">
-                  <img src="https://m.media-amazon.com/images/I/61IxJuRI39L._SL1000_.jpg" alt="" class="img-fluid rounded" style="max-height: 100px; object-fit: contain;">
-                </div>
-                
-                <div class="col-8 col-md-4">
-                  <h5 class=" mb-1 brand-color">BookName</h5>
-                  <p class="text-muted small mb-0">AuthorName</p>
-                </div>
-                
-                <div class="col-6 col-md-3 mt-3 mt-md-0 d-flex align-items-center">
-                  <button class="btn btn-sm btn-outline-secondary px-2">-</button>
-                  <input type="number" class="form-control form-control-sm text-center mx-2" value="1" min="1" style="width: 50px;">
-                  <button class="btn btn-sm btn-outline-secondary px-2">+</button>
-                </div>
-                
-                <div class="col-6 col-md-3 mt-3 mt-md-0 d-flex justify-content-between align-items-center">
-                  <span class="brand-color">price</span> 
-                  <button class="btn btn-sm text-danger"><i class="bi bi-trash3 fs-6"></i></button>
-                </div>
-                
+      
+      <div class="row gy-4">
+        
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body" id="cart-items-container">
               </div>
-                <!-- tags per book title end  -->
-            </div>
           </div>
-          <!-- Order Summary -->
-            <div class="card border-0 shadow-sm bg-brand-light p-3">
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm bg-brand-light p-3">
             <div class="card-body">
               <h5 class="brand-color mb-4">Order Summary</h5>
               
               <div class="d-flex justify-content-between mb-2">
                 <span class="text-muted">Subtotal</span>
-                <span >000 EGP</span>
+                <span id="cart-subtotal">0.00 EGP</span>
               </div>
               
               <div class="d-flex justify-content-between mb-3">
@@ -175,15 +148,16 @@
               <hr class="text-muted">
               
               <div class="d-flex justify-content-between mb-4">
-                <span class=" fs-5 brand-color">Total</span>
-                <span class=" fs-5 brand-color">1065.05 EGP</span>
+                <span class="fs-5 brand-color">Total</span>
+                <span class="fs-5 brand-color " id="cart-total">0.00 EGP</span>
               </div>
               
-              <button class="btn btn-brand w-100 py-2 rounded-pill"><a href="checkout.html" class="text-decoration-none text-white">Proceed to Checkout</a></button>
+              <a href="checkout.html" class="btn btn-brand w-100 py-2 rounded-pill text-decoration-none text-white text-center">Proceed to Checkout</a>
             </div>
           </div>
+        </div>
 
-          
+      </div>
     </main>
 
     <footer class="bg-brand-light pt-5 pb-3 border-top">
@@ -198,7 +172,7 @@
           </div>
 
           <div class="col-lg-4">
-            <h5 class="brand-color fw-bold mb-3">Quick Links</h5>
+            <h5 class="brand-color   mb-3">Quick Links</h5>
             <div class="row">
               <div class="col-6">
                 <ul class="list-unstyled">
@@ -260,5 +234,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/cart.js"></script>
   </body>
 </html>
