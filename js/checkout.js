@@ -73,10 +73,15 @@ checkoutForm.addEventListener('submit', function(event) {
     } else {
         
         // if the data is valid an alert will pop and then clear localStorage and direct the user to the products page
-        alert("Order placed successfully! Thank you for shopping with us.");
-        
-        localStorage.clear();
-        
-        window.location.href = "/pages/products.html"; 
+        Swal.fire({
+        icon: 'success',
+        title: 'Order Placed Successfully!',
+        text: `Thank you for shopping with us!`,
+        confirmButtonText: 'Shop Now',
+        confirmButtonColor: '#4A3025' 
+    }).then(() => { // this block will excute after the sweet alert 
+        window.location.href = "products.html"; // forwarding to the products page 
+        localStorage.removeItem('myCart');
+    }); 
     }
 });
