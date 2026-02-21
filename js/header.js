@@ -12,7 +12,7 @@ let activeUser = (userData && userData.length > 0) ? userData[0] : userData;
   if (activeUser && activeUser.email) {
     headerdiv.innerHTML = `  
       <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center text-decoration-none">
+      <a href="../index.html" class="logo d-flex align-items-center text-decoration-none">
         <h1 class="sitename brand-color">BookStore</h1>
       </a>
 
