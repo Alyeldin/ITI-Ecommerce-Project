@@ -1,27 +1,44 @@
-// Get author_id from URL (?author_id=2)
+//  url Parameters 
 let params = new URLSearchParams(window.location.search);
 let authorId = params.get("id");
-let authorname = params.get("name"); // Get author name from URL
+let authorname = params.get("name"); 
+let searchword = params.get("search") || ""; 
 
-console.log(authorId);
-console.log(authorname);
+function checkUserAndAddToCart(book) {
+  let loggedInUser = localStorage.getItem("user");
 
-function checkUser() {
-  let user = localStorage.getItem("name");
-  console.log(user);
+  if (loggedInUser) {
+    let cart = JSON.parse(localStorage.getItem("myCart")) || [];
+    
+    const existingItem = cart.find(item => item.id === book.id);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      // fetching Supabase data to match the Cart variables
+      cart.push({ 
+        id: book.id,
+        title: book.title,
+        price: book.price,
+        image: book.image_url, 
+        author: book.authors ? book.authors.name : "Unknown Author", // Pulls the author name from the joined table
+        quantity: 1 
+      });
+    }
 
-  if (user) {
+    localStorage.setItem("myCart", JSON.stringify(cart));
+
     Swal.fire({
       icon: "success",
       title: "Added to cart!",
-      text: `Added successfully to cart!`,
+      text: `${book.title} was added successfully!`,
       confirmButtonColor: "#4A3025",
     });
+
   } else {
     Swal.fire({
-      icon: "fail",
+      icon: "error", 
       title: "You have to login first",
-      text: `Signup or login to be able to add to cart`,
+      text: "Signup or login to be able to add to cart",
       confirmButtonColor: "#4A3025",
     }).then(() => {
       window.location.href = "../pages/signup.html";
@@ -29,25 +46,17 @@ function checkUser() {
   }
 }
 
-let searchword = params.get("search") || ""; // Get search parameter from URL
+
 
 const fetchBooks = async () => {
-  let url = "https://tmlgzmvphyqiygezzgmc.supabase.co/rest/v1/books?select=*";
-  if (authorId) {
-    url += `&author_id=eq.${authorId}`;
-  }
-  if (authorname) {
-    url += `&author_id=eq.${authorname}`;
-  }
-  console.log(searchword);
-  if (searchword) {
-    url += `&title=eq.${searchword}`;
-  }
+  // adding ,authors(name)  to the URL so Supabase sends the author name from the authors table
+  let url = "https://tmlgzmvphyqiygezzgmc.supabase.co/rest/v1/books?select=*,authors(name)";
+  
+  if (authorId) url += `&author_id=eq.${authorId}`;
+  if (authorname) url += `&author_id=eq.${authorname}`;
+  if (searchword) url += `&title=eq.${searchword}`;
 
-  console.log(url);
-
-  const anonKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtbGd6bXZwaHlxaXlnZXp6Z21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzOTE0NzMsImV4cCI6MjA4Njk2NzQ3M30.21vSjhruvUUu62QddGvNnUgDpCGWoYoQ2aD-CdAL7R8";
+  const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtbGd6bXZwaHlxaXlnZXp6Z21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzOTE0NzMsImV4cCI6MjA4Njk2NzQ3M30.21vSjhruvUUu62QddGvNnUgDpCGWoYoQ2aD-CdAL7R8";
 
   const options = {
     method: "GET",
@@ -59,38 +68,39 @@ const fetchBooks = async () => {
   };
 
   try {
-    //fetching file from api
     const response = await fetch(url, options);
     const books = await response.json();
 
-    //showing data is retrived
-    console.log("Here are the books from the database:", books);
-
     const productListElement = document.querySelector(".row");
-    productListElement.innerHTML = ""; // Clear the existing content
+    productListElement.innerHTML = ""; 
 
     books.forEach((book) => {
       const card = document.createElement("div");
-      card.className = "col justify-content-center";
+      
+      card.className = "col justify-content-center"; 
 
       card.innerHTML = `
-        <a href="/pages/product-details.html?id=${book.id}" class="text-decoration-none text-black">
-          
-            <div class="card h-100">
-              <img src="${book.image_url}" alt="${book.title}" class="card-img-top">
-              <div class="card-body bg-brand-light">
-                  <h5 class="card-title  lead">${book.title}</h5>
-                  <p class="card-text text-muted lead">Price: ${book.price} $</p>
-                   </a>
-                   <a >
-                  <button onClick="checkUser()" class="btn  btn-brand mt-auto w-100 ">Add to cart</button>
-                  </a>
-              </div>
-            </div>
-           
-          `;
+        <div class="card h-100">
+          <a href="/pages/product-details.html?id=${book.id}" class="text-decoration-none text-black">
+            <img src="${book.image_url}" alt="${book.title}" class="card-img-top">
+          </a>
+          <div class="card-body bg-brand-light">
+              <a href="/pages/product-details.html?id=${book.id}" class="text-decoration-none text-black">
+                <h5 class="card-title lead">${book.title}</h5>
+              </a>
+              <p class="card-text text-muted lead">Price: ${book.price} $</p>
+              
+              <button class="btn btn-brand mt-auto w-100 add-to-cart-btn">Add to cart</button>
+          </div>
+        </div>
+      `;
 
-      productListElement.appendChild(card); // Append the new card to the product list
+      const myButton = card.querySelector('.add-to-cart-btn');
+      myButton.addEventListener('click', function() {
+          checkUserAndAddToCart(book);
+      });
+
+      productListElement.appendChild(card);
     });
   } catch (error) {
     console.error("Error fetching books:", error);

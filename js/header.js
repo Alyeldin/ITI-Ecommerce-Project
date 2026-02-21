@@ -1,18 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   let headerdiv = document.querySelector(".header");
 
-  let users = JSON.stringify(localStorage.getItem("user"));
-  console.log(users.name, users.email); // Log the values to the console
-
-  // localStorage.clear();
-
   if (!headerdiv) {
     console.error("Header div with class 'header' not found");
     return;
   }
-  console.log(users);
+let userData = JSON.parse(localStorage.getItem("user"));
+  
+let activeUser = (userData && userData.length > 0) ? userData[0] : userData;
 
-  if (users.email) {
+  if (activeUser && activeUser.email) {
     headerdiv.innerHTML = `  
       <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center text-decoration-none">
@@ -64,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </nav>
     </div>
   `;
+  
   } else {
     headerdiv.innerHTML = `  
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
