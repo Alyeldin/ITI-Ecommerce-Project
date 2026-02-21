@@ -1,7 +1,33 @@
 // Get author_id from URL (?author_id=2)
 let params = new URLSearchParams(window.location.search);
 let authorId = params.get("id");
+let authorname = params.get("name"); // Get author name from URL
+
 console.log(authorId);
+console.log(authorname);
+
+function checkUser() {
+  let user = localStorage.getItem("name");
+  console.log(user);
+
+  if (user) {
+    Swal.fire({
+      icon: "success",
+      title: "Added to cart!",
+      text: `Added successfully to cart!`,
+      confirmButtonColor: "#4A3025",
+    });
+  } else {
+    Swal.fire({
+      icon: "fail",
+      title: "You have to login first",
+      text: `Signup or login to be able to add to cart`,
+      confirmButtonColor: "#4A3025",
+    }).then(() => {
+      window.location.href = "../pages/signup.html";
+    });
+  }
+}
 
 let searchword = params.get("search") || ""; // Get search parameter from URL
 
@@ -10,10 +36,15 @@ const fetchBooks = async () => {
   if (authorId) {
     url += `&author_id=eq.${authorId}`;
   }
+  if (authorname) {
+    url += `&author_id=eq.${authorname}`;
+  }
   console.log(searchword);
   if (searchword) {
     url += `&title=eq.${searchword}`;
   }
+
+  console.log(url);
 
   const anonKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtbGd6bXZwaHlxaXlnZXp6Z21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzOTE0NzMsImV4cCI6MjA4Njk2NzQ3M30.21vSjhruvUUu62QddGvNnUgDpCGWoYoQ2aD-CdAL7R8";
@@ -50,10 +81,13 @@ const fetchBooks = async () => {
               <div class="card-body bg-brand-light">
                   <h5 class="card-title  lead">${book.title}</h5>
                   <p class="card-text text-muted lead">Price: ${book.price} $</p>
-                  <button class="btn  btn-brand mt-auto w-100 ">Add to cart</button>
+                   </a>
+                   <a >
+                  <button onClick="checkUser()" class="btn  btn-brand mt-auto w-100 ">Add to cart</button>
+                  </a>
               </div>
             </div>
-            </a>
+           
           `;
 
       productListElement.appendChild(card); // Append the new card to the product list
