@@ -1,27 +1,4 @@
-// dummy data for testing
-const dummyCart = [
-  {
-    id: 1,
-    title: "Atomic Habits",
-    author: "James Clear",
-    price: 1065.0,
-    image: "https://m.media-amazon.com/images/I/81YkqyaFVEL.jpg",
-    quantity: 1,
-  },
 
-  {
-    id: 2,
-    title: "Verity",
-    author: "Colleen Hoover",
-    price: 850.5,
-    image: "https://m.media-amazon.com/images/I/41d1gVUK1yL.jpg",
-    quantity: 2,
-  },
-];
-
-if (localStorage.getItem("myCart") === null) {
-  localStorage.setItem("myCart", JSON.stringify(dummyCart));
-}
 
 // retrieving  cart data from loacal storage
 let cartItems = JSON.parse(localStorage.getItem("myCart")) || []; // in case noting in the local storage it will return an empty []
