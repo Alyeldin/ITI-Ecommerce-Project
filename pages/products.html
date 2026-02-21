@@ -124,6 +124,24 @@
             Organized collection of books, providing free access to literature,
             education, and information for the community.
           </p>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search books..."
+              aria-label="searchbar"
+              aria-describedby="button-addon2"
+              id="search"
+            />
+            <button
+              class="btn btn-brand"
+              type="button"
+              id="button-addon2"
+              onclick="handleSearch()"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -205,6 +223,17 @@
     </footer>
 
     <script src="/js/products.js"></script>
+    <script>
+      function handleSearch() {
+        const searchInput = document.getElementById("search").value;
+
+        // Create a new URL with search query parameter
+        const newUrl = `/pages/products.html?search=${encodeURIComponent(searchInput)}`;
+
+        // Redirect to the new URL
+        window.location.href = newUrl;
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

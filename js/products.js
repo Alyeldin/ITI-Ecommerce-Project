@@ -3,11 +3,18 @@ let params = new URLSearchParams(window.location.search);
 let authorId = params.get("id");
 console.log(authorId);
 
+let searchword = params.get("search") || ""; // Get search parameter from URL
+
 const fetchBooks = async () => {
   let url = "https://tmlgzmvphyqiygezzgmc.supabase.co/rest/v1/books?select=*";
   if (authorId) {
     url += `&author_id=eq.${authorId}`;
   }
+  console.log(searchword);
+  if (searchword) {
+    url += `&title=eq.${searchword}`;
+  }
+
   const anonKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtbGd6bXZwaHlxaXlnZXp6Z21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzOTE0NzMsImV4cCI6MjA4Njk2NzQ3M30.21vSjhruvUUu62QddGvNnUgDpCGWoYoQ2aD-CdAL7R8";
 
