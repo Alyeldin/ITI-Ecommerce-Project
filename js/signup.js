@@ -8,7 +8,7 @@ const passwordInput = document.getElementById('password');
 const confirmPasswordInput = document.getElementById('confirmPassword');
 
 let usersList = JSON.parse(localStorage.getItem('user')) || []; // usersList retrive user data from local storage 
-
+console.log(usersList)
 
 
 registerForm.addEventListener('submit', function(event) {
