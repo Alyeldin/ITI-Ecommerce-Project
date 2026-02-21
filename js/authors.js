@@ -25,7 +25,7 @@ const fetchAuthors = async () => {
       .map(
         (author) => `
             <div class="col">
-              <div class="card h-100 border-0 shadow-sm text-center p-4">
+              <div class="card h-100 border-0 shadow text-center p-4">
                 
                 <div class="mb-3">
                   <img src="${author.image_url}" alt="${author.name}" class="rounded-circle shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
