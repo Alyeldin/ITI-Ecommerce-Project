@@ -26,6 +26,7 @@ body {
   background-color: #4a3025;
   color: white;
   border: none;
+  transition: transform 0.3s ease;
 }
 .btn-brand:hover {
   background-color: #332018;
@@ -62,4 +63,13 @@ body {
   background-color: #4a3025;
   color: white;
   border: none;
+}
+
+.card,
+.info {
+  transition: transform 0.3s ease;
+}
+.card:hover,
+.info:hover {
+  transform: scale(1.1);
 }
