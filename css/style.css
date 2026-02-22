@@ -64,12 +64,3 @@ body {
   color: white;
   border: none;
 }
-
-.card,
-.info {
-  transition: transform 0.3s ease;
-}
-.card:hover,
-.info:hover {
-  transform: scale(1.1);
-}
